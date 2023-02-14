@@ -1,0 +1,126 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital@1&display=swap");
+body {
+    background-color: #f7f7f7;
+    font-family: "Lato", sans-serif !important;
+    height: 100vh;
+}
+
+* {
+    list-style: none;
+    border-spacing: 0;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    text-indent: 0;
+}
+
+button:hover,
+button:focus {
+    background: #0053ba;
+}
+
+button:focus {
+    outline: 1px solid #fff;
+    outline-offset: -4px;
+}
+
+button:active {
+    transform: scale(0.99);
+    background-color: #0053ba;
+}
+a {
+    text-decoration: none;
+}
+.container {
+    background-color: #f7f7f7;
+    width: 100%;
+    margin: auto;
+}
+.job_card {
+    padding: 0px 20px;
+}
+
+.alice-carousel__stage-item {
+    padding: 0px 20px;
+    max-width: 500px;
+    border-top: 2px solid transparent;
+}
+.alice-carousel__stage-item:hover {
+    -webkit-box-shadow: 0px -14px 27px -22px rgba(0, 0, 0, 0.6);
+    -moz-box-shadow: 0px -14px 27px -22px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px -14px 27px -22px rgba(0, 0, 0, 0.6);
+    border-top: 2px solid #0053ba;
+    border-radius: 5px;
+}
+
+.alice-carousel__stage-item * {
+    line-height: initial;
+    display: flex;
+    flex-direction: column;
+    background-color: #f6f7f8;
+    line-height: 140%;
+}
+ul {
+    padding: 0px 0px 0px 10px;
+}
+.job_title {
+    font-size: 24px;
+    font-weight: 700;
+    max-width: 85%;
+    min-height: 120px;
+    overflow-x: hidden;
+    justify-content: center;
+}
+.job_name {
+    color: #72777c;
+    font-size: 16px;
+    display: flex;
+    line-height: 22px;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+.job_name span {
+    padding-right: 5px !important;
+    color: #000000;
+    font-weight: 400;
+    padding: 0px 0px 20px 0px;
+}
+.job_desc {
+    font-size: 14px;
+    font-weight: 400;
+    max-height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding-right: 15px;
+}
+.filters {
+    padding: 25px 0px 10px 40px;
+}
+.filters select {
+    border: 1px solid #3174ee;
+    padding: 8px 10px 8px 12px;
+    max-width: 250px;
+    font-size: 14px;
+    line-height: 16px;
+    border-radius: 4px;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0;
+    text-align: center;
+    text-transform: capitalize;
+}
+.alice-carousel__dots {
+    margin: 0px;
+    padding: 0;
+}
+.alice-carousel {
+    padding: 0px 20px;
+}
+.job_desc::-webkit-scrollbar {
+    width: 4px;
+}
+
+.job_desc::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.6); /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+}
