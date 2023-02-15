@@ -3,6 +3,7 @@ body {
     background-color: #f7f7f7;
     font-family: "Lato", sans-serif !important;
     height: 100vh;
+    user-select: none;
 }
 
 * {
