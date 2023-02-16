@@ -1,37 +1,21 @@
-"use client";
 import { useState, useEffect } from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-
-const responsive = {
-    0: { items: 1 },
-    568: { items: 2 },
-    1024: { items: 3 },
-};
+import { API_URL, API_DATA, CAROUSEL_RESPONSIVE } from "./configCarousel";
 
 export default function CarouselComponent() {
     const [jobs, setJobs] = useState([]);
     const [companies, setCompanies] = useState([]);
     const [filterByCompany, setFilterByCompany] = useState(null);
-    const [filterByDate, setFilterByDate] = useState(null);
 
     useEffect(() => {
         async function fetchData() {
-            const url = "https://www.zippia.com/api/jobs/";
-            const data = {
-                companySkills: true,
-                dismissedListingHashes: [],
-                fetchJobDesc: true,
-                locations: [],
-                numJobs: 10,
-            };
-
-            const response = await fetch(url, {
+            const response = await fetch(API_URL, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
                 },
-                body: JSON.stringify(data),
+                body: JSON.stringify(API_DATA),
             });
             const json = await response.json();
             const jobs = json.jobs.slice(0, 10).map((job) => ({
@@ -53,16 +37,11 @@ export default function CarouselComponent() {
 
     const filterByCompanyHandler = (company) => {
         setFilterByCompany(company);
-        setFilterByDate(null);
     };
 
     const filteredJobs = jobs.filter((job) => {
         if (filterByCompany) {
             return job.companyName === filterByCompany;
-        }
-        if (filterByDate) {
-            const jobDate = new Date(job.postedDate);
-            return jobDate >= filterByDate;
         }
         return true;
     });
@@ -89,7 +68,7 @@ export default function CarouselComponent() {
                         filterByCompanyHandler(event.target.value)
                     }
                 >
-                    <option value="">Filter companys</option>
+                    <option value="">Filter companies</option>
                     {companies.map((company) => (
                         <option key={company} value={company}>
                             {company}
@@ -103,7 +82,7 @@ export default function CarouselComponent() {
                 mouseTracking
                 items={filteredItems}
                 keyboardNavigation
-                responsive={responsive}
+                responsive={CAROUSEL_RESPONSIVE}
                 controlsStrategy="alternate"
             />
         </div>

@@ -1,5 +1,5 @@
 import Head from "next/head";
-import CarouselComponent from "./components/carousel";
+import CarouselComponent from "../components/carousel";
 
 export default function Home() {
     return (
