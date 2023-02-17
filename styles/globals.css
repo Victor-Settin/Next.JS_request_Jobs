@@ -95,7 +95,18 @@ ul {
     padding-right: 15px;
 }
 .filters {
-    padding: 25px 0px 10px 40px;
+    display: flex;
+    padding: 19px 0px 0px 0px;
+    width: 100%;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+}
+.content_filters {
+    width: 96%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 .filters select {
     border: 1px solid #3174ee;

@@ -19,7 +19,7 @@ export default function CarouselComponent() {
                 body: JSON.stringify(API_DATA),
             });
             const json = await response.json();
-            const jobs = json.jobs.slice(0, 10).map((job) => ({
+            const jobs = json.jobs.map((job) => ({
                 jobTitle: job.jobTitle,
                 companyName: job.companyName,
                 jobdesc: job.jobDescription,
@@ -69,19 +69,23 @@ export default function CarouselComponent() {
             ) : (
                 <div className="container">
                     <div className="filters">
-                        <select
-                            onChange={(event) =>
-                                filterByCompanyHandler(event.target.value)
-                            }
-                        >
-                            <option value="">Filter companies</option>
-                            {companies.map((company) => (
-                                <option key={company} value={company}>
-                                    {company}
-                                </option>
-                            ))}
-                        </select>
+                        <div className="content_filters">
+                            <select
+                                onChange={(event) =>
+                                    filterByCompanyHandler(event.target.value)
+                                }
+                            >
+                                <option value="">Filter companies</option>
+                                {companies.map((company) => (
+                                    <option key={company} value={company}>
+                                        {company}
+                                    </option>
+                                ))}
+                            </select>
+                            <p>{filteredJobs.length} jobs found.</p>
+                        </div>
                     </div>
+
                     <AliceCarousel
                         infinite={false}
                         disableButtonsControls
