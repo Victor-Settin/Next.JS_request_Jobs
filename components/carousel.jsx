@@ -31,7 +31,7 @@ export default function CarouselComponent() {
                 new Set(jobs.map((job) => job.companyName))
             );
             setCompanies(uniqueCompanies);
-            setIsLoading(false); // Define isLoading como false quando o carregamento estiver completo
+            setIsLoading(false);
         }
 
         fetchData();
@@ -64,7 +64,7 @@ export default function CarouselComponent() {
 
     return (
         <div>
-            {isLoading ? ( // Verifica se isLoading é verdadeiro ou falso antes de renderizar o componente
+            {isLoading ? (
                 <p className="loading">Loading...</p>
             ) : (
                 <div className="container">
