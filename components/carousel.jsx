@@ -7,6 +7,7 @@ export default function CarouselComponent() {
     const [jobs, setJobs] = useState([]);
     const [companies, setCompanies] = useState([]);
     const [filterByCompany, setFilterByCompany] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
@@ -30,6 +31,7 @@ export default function CarouselComponent() {
                 new Set(jobs.map((job) => job.companyName))
             );
             setCompanies(uniqueCompanies);
+            setIsLoading(false); // Define isLoading como false quando o carregamento estiver completo
         }
 
         fetchData();
@@ -61,30 +63,36 @@ export default function CarouselComponent() {
     ));
 
     return (
-        <div className="container">
-            <div className="filters">
-                <select
-                    onChange={(event) =>
-                        filterByCompanyHandler(event.target.value)
-                    }
-                >
-                    <option value="">Filter companies</option>
-                    {companies.map((company) => (
-                        <option key={company} value={company}>
-                            {company}
-                        </option>
-                    ))}
-                </select>
-            </div>
-            <AliceCarousel
-                infinite={false}
-                disableButtonsControls
-                mouseTracking
-                items={filteredItems}
-                keyboardNavigation
-                responsive={CAROUSEL_RESPONSIVE}
-                controlsStrategy="alternate"
-            />
+        <div>
+            {isLoading ? ( // Verifica se isLoading é verdadeiro ou falso antes de renderizar o componente
+                <p className="loading">Loading...</p>
+            ) : (
+                <div className="container">
+                    <div className="filters">
+                        <select
+                            onChange={(event) =>
+                                filterByCompanyHandler(event.target.value)
+                            }
+                        >
+                            <option value="">Filter companies</option>
+                            {companies.map((company) => (
+                                <option key={company} value={company}>
+                                    {company}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                    <AliceCarousel
+                        infinite={false}
+                        disableButtonsControls
+                        mouseTracking
+                        items={filteredItems}
+                        keyboardNavigation
+                        responsive={CAROUSEL_RESPONSIVE}
+                        controlsStrategy="alternate"
+                    />
+                </div>
+            )}
         </div>
     );
 }
